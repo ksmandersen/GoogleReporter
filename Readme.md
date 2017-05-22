@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-### Usage
+## Usage
 
 You can track any event you wish to using the ``event()`` method on the ``GoogleReporter``. Example:
 
@@ -33,8 +33,36 @@ func didCompleteSignUp() {
 }
 ```
 
+In many cases you'll want to track what "screens" that the user navigates to. A natural place to do that is in your ``ViewController``s ``viewDidAppear``.
+You can use the ``screenView()`` method of the ``GoogleReporter`` which works the same as ``event()``.
 
-### License
+```swift
+class BeerViewController: UIViewController {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+	GoogleReporter.shared.screenView("Beer")
+    }
+}
+```
+
+## Technical Notes
+
+The GoogleReporter uses the native ``UserDefaults.standard`` to store a random UUID that uniquely identifies the user/install. Clearing or otherwise tampering
+with the UserDefaults may cause the user identifier to be lost and the GoogleReporter will generate a new unique identifier.
+
+The GoogleReporter class is not thread-safe. To avoid bugs, always use the ``GoogleReporter.shared`` accessor from the same thread. I suggest using the main thread.
+The network call to log the data will still happen on a background thread.
+
+
+## Roadmap
+
+We're planning to to add more functionality to easily interact with the Measurement Protocol.
+Still to be implemented:
+
+- [ ] Session tracking; start, end, duration.
+- [ ] Custom variable tracking for screenviews
+
+## License
 
 Copyright 2017 Kristian Andersen
 
