@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77BFEBFA1ED3108800D66C41 /* GoogleReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BFEBF91ED3108800D66C41 /* GoogleReporter.swift */; };
 		8187DEDE1ED2E85100839D40 /* GoogleReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8187DEDC1ED2E85100839D40 /* GoogleReporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8187DEE51ED2E86E00839D40 /* GoogleReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187DEE41ED2E86E00839D40 /* GoogleReporter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		77BFEBF91ED3108800D66C41 /* GoogleReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleReporter.swift; sourceTree = "<group>"; };
 		8187DED91ED2E85100839D40 /* GoogleReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleReporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8187DEDC1ED2E85100839D40 /* GoogleReporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleReporter.h; sourceTree = "<group>"; };
 		8187DEDD1ED2E85100839D40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8187DEE41ED2E86E00839D40 /* GoogleReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleReporter.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,8 +49,8 @@
 			isa = PBXGroup;
 			children = (
 				8187DEDC1ED2E85100839D40 /* GoogleReporter.h */,
+				77BFEBF91ED3108800D66C41 /* GoogleReporter.swift */,
 				8187DEDD1ED2E85100839D40 /* Info.plist */,
-				8187DEE41ED2E86E00839D40 /* GoogleReporter.swift */,
 			);
 			path = GoogleReporter;
 			sourceTree = "<group>";
@@ -136,7 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8187DEE51ED2E86E00839D40 /* GoogleReporter.swift in Sources */,
+				77BFEBFA1ED3108800D66C41 /* GoogleReporter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +304,7 @@
 				8187DEE31ED2E85100839D40 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
