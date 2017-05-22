@@ -14,10 +14,6 @@ import GoogleReporter
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
-    fileprivate let applicationController = ApplicationController()
-
-    // swiftlint:disable:next line_length
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         GoogleReporter.shared.configure(withTrackerId: "UA-XXXXX-XX")
