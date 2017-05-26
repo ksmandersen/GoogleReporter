@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8121F86F1ED88E9E0098C85C /* GoogleReporter tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 8121F86D1ED88E9E0098C85C /* GoogleReporter tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8121F8731ED88F210098C85C /* GoogleReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187DEE41ED2E86E00839D40 /* GoogleReporter.swift */; };
 		8187DEDE1ED2E85100839D40 /* GoogleReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8187DEDC1ED2E85100839D40 /* GoogleReporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8187DEE51ED2E86E00839D40 /* GoogleReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187DEE41ED2E86E00839D40 /* GoogleReporter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8121F86B1ED88E9E0098C85C /* GoogleReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleReporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8121F86D1ED88E9E0098C85C /* GoogleReporter tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GoogleReporter tvOS.h"; sourceTree = "<group>"; };
+		8121F86E1ED88E9E0098C85C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8187DED91ED2E85100839D40 /* GoogleReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleReporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8187DEDC1ED2E85100839D40 /* GoogleReporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleReporter.h; sourceTree = "<group>"; };
 		8187DEDD1ED2E85100839D40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -19,6 +24,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8121F8671ED88E9E0098C85C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8187DED51ED2E85100839D40 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -29,10 +41,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8121F86C1ED88E9E0098C85C /* GoogleReporter tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				8121F86D1ED88E9E0098C85C /* GoogleReporter tvOS.h */,
+				8121F86E1ED88E9E0098C85C /* Info.plist */,
+			);
+			path = "GoogleReporter tvOS";
+			sourceTree = "<group>";
+		};
 		8187DECF1ED2E85100839D40 = {
 			isa = PBXGroup;
 			children = (
 				8187DEDB1ED2E85100839D40 /* GoogleReporter */,
+				8121F86C1ED88E9E0098C85C /* GoogleReporter tvOS */,
 				8187DEDA1ED2E85100839D40 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				8187DED91ED2E85100839D40 /* GoogleReporter.framework */,
+				8121F86B1ED88E9E0098C85C /* GoogleReporter.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,6 +81,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		8121F8681ED88E9E0098C85C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8121F86F1ED88E9E0098C85C /* GoogleReporter tvOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8187DED61ED2E85100839D40 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -69,6 +100,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		8121F86A1ED88E9E0098C85C /* GoogleReporter tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8121F8721ED88E9E0098C85C /* Build configuration list for PBXNativeTarget "GoogleReporter tvOS" */;
+			buildPhases = (
+				8121F8661ED88E9E0098C85C /* Sources */,
+				8121F8671ED88E9E0098C85C /* Frameworks */,
+				8121F8681ED88E9E0098C85C /* Headers */,
+				8121F8691ED88E9E0098C85C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "GoogleReporter tvOS";
+			productName = "GoogleReporter tvOS";
+			productReference = 8121F86B1ED88E9E0098C85C /* GoogleReporter.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		8187DED81ED2E85100839D40 /* GoogleReporter */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8187DEE11ED2E85100839D40 /* Build configuration list for PBXNativeTarget "GoogleReporter" */;
@@ -96,6 +145,11 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Kristian Co";
 				TargetAttributes = {
+					8121F86A1ED88E9E0098C85C = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = Z394R7NW4H;
+						ProvisioningStyle = Automatic;
+					};
 					8187DED81ED2E85100839D40 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = Z394R7NW4H;
@@ -117,11 +171,19 @@
 			projectRoot = "";
 			targets = (
 				8187DED81ED2E85100839D40 /* GoogleReporter */,
+				8121F86A1ED88E9E0098C85C /* GoogleReporter tvOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8121F8691ED88E9E0098C85C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8187DED71ED2E85100839D40 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -132,6 +194,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8121F8661ED88E9E0098C85C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8121F8731ED88F210098C85C /* GoogleReporter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8187DED41ED2E85100839D40 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -143,6 +213,50 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		8121F8701ED88E9E0098C85C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Z394R7NW4H;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "GoogleReporter tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.kristian.GoogleReporter;
+				PRODUCT_NAME = GoogleReporter;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Debug;
+		};
+		8121F8711ED88E9E0098C85C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Z394R7NW4H;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "GoogleReporter tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.kristian.GoogleReporter;
+				PRODUCT_NAME = GoogleReporter;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Release;
+		};
 		8187DEDF1ED2E85100839D40 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -288,6 +402,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8121F8721ED88E9E0098C85C /* Build configuration list for PBXNativeTarget "GoogleReporter tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8121F8701ED88E9E0098C85C /* Debug */,
+				8121F8711ED88E9E0098C85C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		8187DED31ED2E85100839D40 /* Build configuration list for PBXProject "GoogleReporter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -304,6 +426,7 @@
 				8187DEE31ED2E85100839D40 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
