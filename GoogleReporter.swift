@@ -119,6 +119,7 @@ public class GoogleReporter {
         guard let identifier = defaults.string(forKey: GoogleReporter.identifierKey) else {
             let identifier = UUID().uuidString
             defaults.set(identifier, forKey: GoogleReporter.identifierKey)
+            defaults.synchronize()
             
             if !self.quietMode {
                 print("New GA user with identifier: ", identifier)
