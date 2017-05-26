@@ -2,6 +2,8 @@
 
 Easily integrate Google Analytics into your iOS/tvOS app without downloading any of the Google SDKs.
 
+[Read why I created Google Reporter here](https://medium.com/swift-digest/using-google-analytics-in-your-app-without-any-sdks-46f9a70bc178)
+
 ## Set Up
 
 Works with Carthage or just put ``GoogleReporter.swift`` into your project. 
