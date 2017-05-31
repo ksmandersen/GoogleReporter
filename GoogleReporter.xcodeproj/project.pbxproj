@@ -11,6 +11,7 @@
 		8121F8731ED88F210098C85C /* GoogleReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187DEE41ED2E86E00839D40 /* GoogleReporter.swift */; };
 		8187DEDE1ED2E85100839D40 /* GoogleReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8187DEDC1ED2E85100839D40 /* GoogleReporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8187DEE51ED2E86E00839D40 /* GoogleReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187DEE41ED2E86E00839D40 /* GoogleReporter.swift */; };
+		FF2F92251EDF34500032F932 /* GoogleReporter macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = FF2F92231EDF34500032F932 /* GoogleReporter macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,9 @@
 		8187DEDC1ED2E85100839D40 /* GoogleReporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleReporter.h; sourceTree = "<group>"; };
 		8187DEDD1ED2E85100839D40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8187DEE41ED2E86E00839D40 /* GoogleReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleReporter.swift; sourceTree = SOURCE_ROOT; };
+		FF2F92211EDF34500032F932 /* GoogleReporter macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "GoogleReporter macOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF2F92231EDF34500032F932 /* GoogleReporter macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GoogleReporter macOS.h"; sourceTree = "<group>"; };
+		FF2F92241EDF34500032F932 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +36,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8187DED51ED2E85100839D40 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF2F921D1EDF34500032F932 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -55,6 +66,7 @@
 			children = (
 				8187DEDB1ED2E85100839D40 /* GoogleReporter */,
 				8121F86C1ED88E9E0098C85C /* GoogleReporter tvOS */,
+				FF2F92221EDF34500032F932 /* GoogleReporter macOS */,
 				8187DEDA1ED2E85100839D40 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,6 +76,7 @@
 			children = (
 				8187DED91ED2E85100839D40 /* GoogleReporter.framework */,
 				8121F86B1ED88E9E0098C85C /* GoogleReporter.framework */,
+				FF2F92211EDF34500032F932 /* GoogleReporter macOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,6 +89,15 @@
 				8187DEE41ED2E86E00839D40 /* GoogleReporter.swift */,
 			);
 			path = GoogleReporter;
+			sourceTree = "<group>";
+		};
+		FF2F92221EDF34500032F932 /* GoogleReporter macOS */ = {
+			isa = PBXGroup;
+			children = (
+				FF2F92231EDF34500032F932 /* GoogleReporter macOS.h */,
+				FF2F92241EDF34500032F932 /* Info.plist */,
+			);
+			path = "GoogleReporter macOS";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -94,6 +116,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8187DEDE1ED2E85100839D40 /* GoogleReporter.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF2F921E1EDF34500032F932 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF2F92251EDF34500032F932 /* GoogleReporter macOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +166,24 @@
 			productReference = 8187DED91ED2E85100839D40 /* GoogleReporter.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		FF2F92201EDF34500032F932 /* GoogleReporter macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF2F92281EDF34500032F932 /* Build configuration list for PBXNativeTarget "GoogleReporter macOS" */;
+			buildPhases = (
+				FF2F921C1EDF34500032F932 /* Sources */,
+				FF2F921D1EDF34500032F932 /* Frameworks */,
+				FF2F921E1EDF34500032F932 /* Headers */,
+				FF2F921F1EDF34500032F932 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "GoogleReporter macOS";
+			productName = "GoogleReporter macOS";
+			productReference = FF2F92211EDF34500032F932 /* GoogleReporter macOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -156,6 +204,10 @@
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
+					FF2F92201EDF34500032F932 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 8187DED31ED2E85100839D40 /* Build configuration list for PBXProject "GoogleReporter" */;
@@ -172,6 +224,7 @@
 			targets = (
 				8187DED81ED2E85100839D40 /* GoogleReporter */,
 				8121F86A1ED88E9E0098C85C /* GoogleReporter tvOS */,
+				FF2F92201EDF34500032F932 /* GoogleReporter macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -185,6 +238,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8187DED71ED2E85100839D40 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF2F921F1EDF34500032F932 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -207,6 +267,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8187DEE51ED2E86E00839D40 /* GoogleReporter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF2F921C1EDF34500032F932 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +466,50 @@
 			};
 			name = Release;
 		};
+		FF2F92261EDF34500032F932 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "GoogleReporter macOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = co.kristian.GoogleReporter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		FF2F92271EDF34500032F932 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "GoogleReporter macOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = co.kristian.GoogleReporter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -409,6 +520,7 @@
 				8121F8711ED88E9E0098C85C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8187DED31ED2E85100839D40 /* Build configuration list for PBXProject "GoogleReporter" */ = {
 			isa = XCConfigurationList;
@@ -427,6 +539,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		FF2F92281EDF34500032F932 /* Build configuration list for PBXNativeTarget "GoogleReporter macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF2F92261EDF34500032F932 /* Debug */,
+				FF2F92271EDF34500032F932 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
