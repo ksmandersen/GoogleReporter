@@ -63,6 +63,7 @@ Still to be implemented:
 
 - [ ] Session tracking; start, end, duration.
 - [ ] Custom variable tracking for screenviews
+- [ ] Support for macOS
 
 ## License
 
