@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8121F86A1ED88E9E0098C85C"
-               BuildableName = "GoogleReporter tvOS.framework"
+               BuildableName = "GoogleReporter.framework"
                BlueprintName = "GoogleReporter tvOS"
                ReferencedContainer = "container:GoogleReporter.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8121F86A1ED88E9E0098C85C"
-            BuildableName = "GoogleReporter tvOS.framework"
+            BuildableName = "GoogleReporter.framework"
             BlueprintName = "GoogleReporter tvOS"
             ReferencedContainer = "container:GoogleReporter.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8121F86A1ED88E9E0098C85C"
-            BuildableName = "GoogleReporter tvOS.framework"
+            BuildableName = "GoogleReporter.framework"
             BlueprintName = "GoogleReporter tvOS"
             ReferencedContainer = "container:GoogleReporter.xcodeproj">
          </BuildableReference>
