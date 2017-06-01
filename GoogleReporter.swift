@@ -18,9 +18,27 @@ extension Dictionary {
     }
 }
 
+/// GoogleReporter is a class that enables tracking events to Google Analytics. The class uses the
+/// Google Analytics Measurement protocol which is 
+/// [documented in full here](https://developers.google.com/analytics/devguides/collection/protocol/v1/reference).
+///
+/// The class support two specific types of events and generic events.
+/// - Screen views are reported using `screenView(_:parameters:)` with the name of the screen.
+/// - Exceptions are reported using `exception(_:isFatal:parameters:)`.
+/// - Generic events are reported using `event(_:action:label:parameters:)`.
+///
+/// For a full list of all the supported parameters please refer to the [Google Analytics parameter
+/// reference](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters)
+///
+/// - Note: A valid Google Analytics tracker ID must be set with `configure(withTrackerId:)` before
+/// reporting any events.
 public class GoogleReporter {
+ 
+    /// Returns the singleton reporter instance.
     public static let shared = GoogleReporter()
     
+    /// Determines if stdout log from network requests are supressed.
+    /// Default is true.
     public var quietMode = true
     
     private static let baseURL = URL(string: "https://www.google-analytics.com/")!
@@ -30,32 +48,52 @@ public class GoogleReporter {
     
     private init() {}
     
+    /// Configures the reporter with a Google Analytics Identifier (Tracker ID).
+    /// The token can be obtained from the admin page of the tracked Google Analytics entity.
+    ///
+    /// - Parameter trackerId: A valid Google Analytics tracker ID of form UA-XXXXX-XX.
     public func configure(withTrackerId trackerId: String) {
         self.trackerId = trackerId
     }
     
+    /// Tracks a screen view event to Google Analytics by setting the `cd`
+    /// parameter of the request.
+    ///
+    /// - Parameter name: The name of the screen.
+    /// - Parameter parameters: A dictionary of additional parameters for the event.
     public func screenView(_ name: String, parameters: [String: String] = [:]) {
         let data = parameters.combinedWith(["cd": name])
         send("screenView", parameters: data)
     }
     
+    /// Tracks an event to Google Analytics.
+    ///
+    /// - Parameter category: The category of the event (ec).
+    /// - Parameter action: The action of the event (ea).
+    /// - Parameter label: The label of the event (el).
+    /// - Parameter parameters: A dictionary of additional parameters for the event.
     public func event(_ category: String, action: String, label: String = "",
                       parameters: [String: String] = [:]) {
         let data = parameters.combinedWith([
             "ec": category,
             "ea": action,
             "el": label
-            ])
+        ])
         
         send("event", parameters: data)
     }
     
+    /// Tracks an exception event to Google Analytics.
+    ///
+    /// - Parameter description: The description of the exception (ec).
+    /// - Parameter isFatal: Indicates if the exception was fatal to the execution of the program (exf).
+    /// - Parameter parameters: A dictionary of additional parameters for the event.
     public func exception(_ description: String, isFatal: Bool,
                           parameters: [String: String] = [:]) {
         let data = parameters.combinedWith([
             "exd": description,
             "exf": String(isFatal)
-            ])
+        ])
         
         send("exception", parameters: data)
     }
