@@ -234,7 +234,7 @@ public class GoogleReporter {
         #if os(iOS) || os(tvOS) || os(watchOS)
             let size = UIScreen.main.bounds.size
         #elseif os(OSX)
-            let size = NSScreen.main()?.frame.size ?? CGSize()
+            let size = NSScreen.main()?.frame.size ?? .zero
         #endif
         
         return "\(size.width)x\(size.height)"
