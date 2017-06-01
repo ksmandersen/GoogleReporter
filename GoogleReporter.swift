@@ -100,7 +100,9 @@ public class GoogleReporter {
     
     private func send(_ type:  String, parameters: [String: String]) {
         guard let trackerId = trackerId else {
-            fatalError("You must set your tracker ID UA-XXXXX-XX with GoogleReporter.configure()")
+            print("GoogleReporter event ignored.")
+            print("You must set your tracker ID UA-XXXXX-XX with GoogleReporter.configure()")
+            return
         }
         
         let queryArguments: [String: String] = [
@@ -117,7 +119,9 @@ public class GoogleReporter {
         ]
         
         let arguments = queryArguments.combinedWith(parameters)
-        let url = GoogleReporter.generateUrl(with: arguments)
+        guard let url = GoogleReporter.generateUrl(with: arguments) else {
+            return
+        }
         
         if !quietMode {
             print("Sending GA Report: ", url.absoluteString)
@@ -133,7 +137,7 @@ public class GoogleReporter {
         task.resume()
     }
     
-    private static func generateUrl(with parameters: [String: String]) -> URL {
+    private static func generateUrl(with parameters: [String: String]) -> URL? {
         let characterSet = CharacterSet.urlPathAllowed
         
         let joined = parameters.reduce("collect?") { path, query in
@@ -146,7 +150,9 @@ public class GoogleReporter {
         
         // Make sure we generated a valid URL
         guard let url = URL(string: path, relativeTo: baseURL) else {
-            fatalError("Failed to generate a valid GA url")
+            print("GoogleReporter failed to generate a valid GA url for path ",
+                  path, " relative to ", baseURL.absoluteString)
+            return nil
         }
         
         return url
@@ -176,19 +182,19 @@ public class GoogleReporter {
     }()
     
     private lazy var appName: String = {
-        return Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String ?? "(not set)"
     }()
     
     private lazy var appIdentifier: String = {
-        return Bundle.main.object(forInfoDictionaryKey: "CFBundleIdentifier") as! String
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleIdentifier") as? String  ?? "(not set)"
     }()
     
     private lazy var appVersion: String = {
-        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String  ?? "(not set)"
     }()
     
     private lazy var appBuild: String = {
-        return Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String
+        return Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String  ?? "(not set)"
     }()
     
     private lazy var formattedVersion: String = {
