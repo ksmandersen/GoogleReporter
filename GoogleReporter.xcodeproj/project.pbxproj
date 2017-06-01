@@ -409,6 +409,7 @@
 				8121F8711ED88E9E0098C85C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8187DED31ED2E85100839D40 /* Build configuration list for PBXProject "GoogleReporter" */ = {
 			isa = XCConfigurationList;
