@@ -6,7 +6,12 @@
 //  Copyright © 2017 Kristian Co. All rights reserved.
 //
 
-import UIKit
+#if os(iOS) || os(tvOS) || os(watchOS)
+    import UIKit
+#elseif os(OSX)
+    import AppKit
+    import Foundation
+#endif
 
 extension Dictionary {
     func combinedWith(_ other: [Key: Value]) -> [Key: Value] {
@@ -175,10 +180,16 @@ public class GoogleReporter {
         return identifier
     }()
     
-    private lazy var userAgent: String = {
-        let currentDevice = UIDevice.current
-        let osVersion = currentDevice.systemVersion.replacingOccurrences(of: ".", with: "_")
-        return "Mozilla/5.0 (\(currentDevice.model); CPU iPhone OS \(osVersion) like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13T534YI"
+    public lazy var userAgent: String = {
+        #if os(iOS) || os(tvOS) || os(watchOS)
+            let currentDevice = UIDevice.current
+            let osVersion = currentDevice.systemVersion.replacingOccurrences(of: ".", with: "_")
+            return "Mozilla/5.0 (\(currentDevice.model); CPU iPhone OS \(osVersion) like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13T534YI"
+        #elseif os(OSX)
+            let osVersion = ProcessInfo.processInfo.operatingSystemVersionString.replacingOccurrences(of: ".", with: "_")
+            let model = self.hardwareModel()
+            return "\(model); \(osVersion))"
+        #endif
     }()
     
     private lazy var appName: String = {
@@ -210,7 +221,25 @@ public class GoogleReporter {
     }()
     
     private lazy var screenResolution: String = {
-        let size = UIScreen.main.bounds.size
+        #if os(iOS) || os(tvOS) || os(watchOS)
+            let size = UIScreen.main.bounds.size
+        #elseif os(OSX)
+            let size = NSScreen.main()?.frame.size ?? CGSize()
+        #endif
+        
         return "\(size.width)x\(size.height)"
     }()
+    
+    
+    #if os(OSX)
+    public func hardwareModel() -> String {
+        var name: [Int32] = [CTL_HW, HW_MODEL]
+        var size: Int = 2
+        sysctl(&name, 2, nil, &size, &name, 0)
+        var hw_machine = [CChar](repeating: 0, count: Int(size))
+        sysctl(&name, 2, &hw_machine, &size, &name, 0)
+        let hardware: String = String(cString: hw_machine)
+        return hardware
+    }
+    #endif
 }
