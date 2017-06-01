@@ -11,6 +11,7 @@
 		8121F8731ED88F210098C85C /* GoogleReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187DEE41ED2E86E00839D40 /* GoogleReporter.swift */; };
 		8187DEDE1ED2E85100839D40 /* GoogleReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8187DEDC1ED2E85100839D40 /* GoogleReporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8187DEE51ED2E86E00839D40 /* GoogleReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187DEE41ED2E86E00839D40 /* GoogleReporter.swift */; };
+		81A3CED91EE0153900672187 /* GoogleReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187DEE41ED2E86E00839D40 /* GoogleReporter.swift */; };
 		FF2F92251EDF34500032F932 /* GoogleReporter macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = FF2F92231EDF34500032F932 /* GoogleReporter macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -272,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81A3CED91EE0153900672187 /* GoogleReporter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
