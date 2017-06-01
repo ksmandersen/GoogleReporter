@@ -143,8 +143,8 @@ public class GoogleReporter {
             return "Mozilla/5.0 (\(currentDevice.model); CPU iPhone OS \(osVersion) like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13T534YI"
         #elseif os(OSX)
             let osVersion = ProcessInfo.processInfo.operatingSystemVersionString.replacingOccurrences(of: ".", with: "_")
-            
-            return "\(try! self.sysctlString(levels: CTL_HW, HW_MODEL)); \(osVersion))"
+            let model = self.hardwareModel()
+            return "\(model); \(osVersion))"
         #endif
     }()
     
@@ -180,73 +180,22 @@ public class GoogleReporter {
         #if os(iOS) || os(tvOS) || os(watchOS)
             let size = UIScreen.main.bounds.size
         #elseif os(OSX)
-            let size = NSScreen.main()!.frame.size
+            let size = NSScreen.main()?.frame.size ?? CGSize()
         #endif
         
         return "\(size.width)x\(size.height)"
     }()
     
-    /* So apparently it's pretty complex to get the model identifier on macOS (e.g. MacBookPro11,1).
-       Need to use the sysctl function. The following are some wrapper functions around sysctl
-       which come from here: 
-       https://github.com/mattgallagher/CwlUtils/blob/af275791ae3dcfe9ab18a4593c0c13c464498504/Sources/CwlUtils/CwlSysctl.swift
-    */
+    
     #if os(OSX)
-    private func sysctlString(levels: Int32...) throws -> String {
-        return try stringFromSysctl(levels: levels)
-    }
-    
-    public func sysctlLevels(fromName: String) throws -> [Int32] {
-        var levelsBufferSize = Int(CTL_MAXNAME)
-        var levelsBuffer = Array<Int32>(repeating: 0, count: levelsBufferSize)
-        try levelsBuffer.withUnsafeMutableBufferPointer { (lbp: inout UnsafeMutableBufferPointer<Int32>) throws in
-            try fromName.withCString { (nbp: UnsafePointer<Int8>) throws in
-                guard sysctlnametomib(nbp, lbp.baseAddress, &levelsBufferSize) == 0 else {
-                    throw POSIXErrorCode(rawValue: errno).map { SysctlError.posixError($0) } ?? SysctlError.unknown
-                }
-            }
-        }
-        if levelsBuffer.count > levelsBufferSize {
-            levelsBuffer.removeSubrange(levelsBufferSize..<levelsBuffer.count)
-        }
-        return levelsBuffer
-    }
-    
-    private func stringFromSysctl(levels: [Int32]) throws -> String {
-        let optionalString = try sysctl(levels: levels).withUnsafeBufferPointer() { dataPointer -> String? in
-            dataPointer.baseAddress.flatMap { String(validatingUTF8: $0) }
-        }
-        guard let s = optionalString else { throw SysctlError.malformedUTF8 }
-        return s
-    }
-    
-    private func sysctl(levels: [Int32]) throws -> [Int8] {
-        return try levels.withUnsafeBufferPointer() { levelsPointer throws -> [Int8] in
-            // Preflight the request to get the required data size
-            var requiredSize = 0
-            let preFlightResult = Darwin.sysctl(UnsafeMutablePointer<Int32>(mutating: levelsPointer.baseAddress), UInt32(levels.count), nil, &requiredSize, nil, 0)
-            if preFlightResult != 0 {
-                throw POSIXErrorCode(rawValue: errno).map { SysctlError.posixError($0) } ?? SysctlError.unknown
-            }
-            
-            // Run the actual request with an appropriately sized array buffer
-            let data = Array<Int8>(repeating: 0, count: requiredSize)
-            let result = data.withUnsafeBufferPointer() { dataBuffer -> Int32 in
-                return Darwin.sysctl(UnsafeMutablePointer<Int32>(mutating: levelsPointer.baseAddress), UInt32(levels.count), UnsafeMutableRawPointer(mutating: dataBuffer.baseAddress), &requiredSize, nil, 0)
-            }
-            if result != 0 {
-                throw POSIXErrorCode(rawValue: errno).map { SysctlError.posixError($0) } ?? SysctlError.unknown
-            }
-            
-            return data
-        }
-    }
-    
-    public enum SysctlError: Error {
-        case unknown
-        case malformedUTF8
-        case invalidSize
-        case posixError(POSIXErrorCode)
+    public func hardwareModel() -> String {
+        var name: [Int32] = [CTL_HW, HW_MODEL]
+        var size: Int = 2
+        sysctl(&name, 2, nil, &size, &name, 0)
+        var hw_machine = [CChar](repeating: 0, count: Int(size))
+        sysctl(&name, 2, &hw_machine, &size, &name, 0)
+        let hardware: String = String(cString: hw_machine)
+        return hardware
     }
     #endif
 }
