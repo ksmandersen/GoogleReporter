@@ -192,6 +192,16 @@ public class GoogleReporter {
         #endif
     }()
     
+    private func hardwareModel() -> String {
+        var name: [Int32] = [CTL_HW, HW_MODEL]
+        var size: Int = 2
+        sysctl(&name, 2, nil, &size, &name, 0)
+        var hw_machine = [CChar](repeating: 0, count: Int(size))
+        sysctl(&name, 2, &hw_machine, &size, &name, 0)
+        let hardware: String = String(cString: hw_machine)
+        return hardware
+    }
+    
     private lazy var appName: String = {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String ?? "(not set)"
     }()
@@ -229,17 +239,4 @@ public class GoogleReporter {
         
         return "\(size.width)x\(size.height)"
     }()
-    
-    
-    #if os(OSX)
-    public func hardwareModel() -> String {
-        var name: [Int32] = [CTL_HW, HW_MODEL]
-        var size: Int = 2
-        sysctl(&name, 2, nil, &size, &name, 0)
-        var hw_machine = [CChar](repeating: 0, count: Int(size))
-        sysctl(&name, 2, &hw_machine, &size, &name, 0)
-        let hardware: String = String(cString: hw_machine)
-        return hardware
-    }
-    #endif
 }
