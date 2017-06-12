@@ -8,6 +8,8 @@ Easily integrate Google Analytics into your iOS, macOS, and tvOS app without dow
 
 [Read why I created Google Reporter here](https://medium.com/swift-digest/using-google-analytics-in-your-app-without-any-sdks-46f9a70bc178)
 
+**Swift 4/Xcode 9 Support:** Please use the ``swift-4`` branch.
+
 ## Set Up
 
 Works with Carthage or just put ``GoogleReporter.swift`` into your project. 
