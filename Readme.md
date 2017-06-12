@@ -4,7 +4,7 @@
 
 # Google Reporter
 
-Easily integrate Google Analytics into your iOS/tvOS app without downloading any of the Google SDKs.
+Easily integrate Google Analytics into your iOS, macOS, and tvOS app without downloading any of the Google SDKs.
 
 [Read why I created Google Reporter here](https://medium.com/swift-digest/using-google-analytics-in-your-app-without-any-sdks-46f9a70bc178)
 
@@ -67,7 +67,6 @@ Still to be implemented:
 
 - [ ] Session tracking; start, end, duration.
 - [ ] Custom variable tracking for screenviews
-- [ ] Support for macOS
 
 ## License
 
