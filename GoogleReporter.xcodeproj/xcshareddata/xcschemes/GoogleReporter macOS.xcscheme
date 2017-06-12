@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FF2F92201EDF34500032F932"
-               BuildableName = "GoogleReporter macOS.framework"
+               BuildableName = "GoogleReporter.framework"
                BlueprintName = "GoogleReporter macOS"
                ReferencedContainer = "container:GoogleReporter.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF2F92201EDF34500032F932"
-            BuildableName = "GoogleReporter macOS.framework"
+            BuildableName = "GoogleReporter.framework"
             BlueprintName = "GoogleReporter macOS"
             ReferencedContainer = "container:GoogleReporter.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF2F92201EDF34500032F932"
-            BuildableName = "GoogleReporter macOS.framework"
+            BuildableName = "GoogleReporter.framework"
             BlueprintName = "GoogleReporter macOS"
             ReferencedContainer = "container:GoogleReporter.xcodeproj">
          </BuildableReference>
