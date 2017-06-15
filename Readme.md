@@ -1,5 +1,6 @@
 [![](http://img.shields.io/badge/Swift-3.1-blue.svg)]()
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage)
+[![CocoaPods compatible](https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg)](https://github.com/CocoaPods/CocoaPods)
 [![](http://img.shields.io/badge/operator_overload-nope-green.svg)](https://gist.github.com/duemunk/61e45932dbb1a2ca0954)
 
 # Google Reporter
@@ -8,7 +9,7 @@ Easily integrate Google Analytics into your iOS, macOS, and tvOS app without dow
 
 [Read why I created Google Reporter here](https://medium.com/swift-digest/using-google-analytics-in-your-app-without-any-sdks-46f9a70bc178)
 
-**Swift 4/Xcode 9 Support:** Please use the ``swift-4`` branch.
+**Swift 4/Xcode 9 Support:** Please use the [``swift-4``](https://github.com/ksmandersen/GoogleReporter/tree/swift-4) branch.
 
 ## Set Up
 
