@@ -45,6 +45,10 @@ public class GoogleReporter {
     /// Determines if stdout log from network requests are supressed.
     /// Default is true.
     public var quietMode = true
+
+	///	Specifies if app should use IDFV (`UIDevice.current.identifierForVendor`), instead of `UUID().uuidString`
+	///	Default is false
+	public var useIDFV = false
     
     private static let baseURL = URL(string: "https://www.google-analytics.com/")!
     private static let identifierKey = "co.kristian.GoogleReporter.uniqueUserIdentifier"
@@ -164,6 +168,11 @@ public class GoogleReporter {
     }
     
     private lazy var uniqueUserIdentifier: String = {
+		if self.useIDFV {
+			let identifier = UIDevice.current.identifierForVendor?.uuidString ?? "(unknown)"
+			return identifier
+		}
+
         let defaults = UserDefaults.standard
         guard let identifier = defaults.string(forKey: GoogleReporter.identifierKey) else {
             let identifier = UUID().uuidString
