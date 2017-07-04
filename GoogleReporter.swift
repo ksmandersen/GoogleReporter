@@ -74,7 +74,19 @@ public class GoogleReporter {
         let data = parameters.combinedWith(["cd": name])
         send("screenView", parameters: data)
     }
-    
+
+    /// Tracks a session start to Google Analytics.
+    ///
+    /// - Parameter start: true indicate session started, false - session finished.
+    public func session(start: Bool) {
+        let queryArguments: [String: String] = [
+            "sc": start ? "start" : "end",
+            "dp": appName,
+        ]
+
+        send("", parameters: queryArguments)
+    }
+
     /// Tracks an event to Google Analytics.
     ///
     /// - Parameter category: The category of the event (ec).
@@ -113,8 +125,8 @@ public class GoogleReporter {
             print("You must set your tracker ID UA-XXXXX-XX with GoogleReporter.configure()")
             return
         }
-        
-        let queryArguments: [String: String] = [
+
+        var queryArguments: [String: String] = [
             "tid": trackerId,
             "aid": appIdentifier,
             "cid": uniqueUserIdentifier,
@@ -123,9 +135,11 @@ public class GoogleReporter {
             "ua": userAgent,
             "ul": userLanguage,
             "sr": screenResolution,
-            "v": "1",
-            "t": type
+            "v": "1"
         ]
+        if !type.isEmpty {
+            queryArguments.updateValue(type, forKey: "t")
+        }
         
         let arguments = queryArguments.combinedWith(parameters)
         guard let url = GoogleReporter.generateUrl(with: arguments) else {
