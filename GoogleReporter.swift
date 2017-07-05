@@ -183,9 +183,9 @@ public class GoogleReporter {
     }
     
     private lazy var uniqueUserIdentifier: String = {
-        if let identifier = UIDevice.current.identifierForVendor?.uuidString, usesVendorIdentifier {
+        if let identifier = UIDevice.current.identifierForVendor?.uuidString, self.usesVendorIdentifier {
             return identifier
-	}
+        }
 
         let defaults = UserDefaults.standard
         guard let identifier = defaults.string(forKey: GoogleReporter.identifierKey) else {
