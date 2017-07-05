@@ -72,7 +72,7 @@ public class GoogleReporter {
     /// - Parameter parameters: A dictionary of additional parameters for the event.
     public func screenView(_ name: String, parameters: [String: String] = [:]) {
         let data = parameters.combinedWith(["cd": name])
-        send("screenView", parameters: data)
+        send(type: "screenView", parameters: data)
     }
 
     /// Tracks a session start to Google Analytics.
@@ -84,7 +84,7 @@ public class GoogleReporter {
             "dp": appName,
         ]
 
-        send("", parameters: queryArguments)
+        send(type: nil, parameters: queryArguments)
     }
 
     /// Tracks an event to Google Analytics.
@@ -101,7 +101,7 @@ public class GoogleReporter {
             "el": label
         ])
         
-        send("event", parameters: data)
+        send(type: "event", parameters: data)
     }
     
     /// Tracks an exception event to Google Analytics.
@@ -116,10 +116,10 @@ public class GoogleReporter {
             "exf": String(isFatal)
         ])
         
-        send("exception", parameters: data)
+        send(type: "exception", parameters: data)
     }
     
-    private func send(_ type:  String, parameters: [String: String]) {
+    private func send(type:  String?, parameters: [String: String]) {
         guard let trackerId = trackerId else {
             print("GoogleReporter event ignored.")
             print("You must set your tracker ID UA-XXXXX-XX with GoogleReporter.configure()")
@@ -137,7 +137,8 @@ public class GoogleReporter {
             "sr": screenResolution,
             "v": "1"
         ]
-        if !type.isEmpty {
+        
+        if let type = type, !type.isEmpty {
             queryArguments.updateValue(type, forKey: "t")
         }
         
