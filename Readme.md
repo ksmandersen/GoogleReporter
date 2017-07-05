@@ -68,7 +68,8 @@ The network call to log the data will still happen on a background thread.
 We're planning to to add more functionality to easily interact with the Measurement Protocol.
 Still to be implemented:
 
-- [ ] Session tracking; start, end, duration.
+- [x] macOS Compatability
+- [x] Session tracking; start, end, duration.
 - [ ] Custom variable tracking for screenviews
 
 ## License
