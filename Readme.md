@@ -13,7 +13,7 @@ Easily integrate Google Analytics into your iOS, macOS, and tvOS app without dow
 
 ## Set Up
 
-Works with Carthage or just put ``GoogleReporter.swift`` into your project. 
+Works with Carthage & CocoaPods or just put ``GoogleReporter.swift`` into your project. 
 
 From your ``AppDelegate``'s ``didFinishLaunchingWithOptions`` or where you initialize your app. You need to configure the
 ``GoogleReporter`` with ``UA-XXXXX-XX`` tracker ID.
@@ -94,9 +94,8 @@ The network call to log the data will still happen on a background thread.
 ## Roadmap
 
 We're planning to to add more functionality to easily interact with the Measurement Protocol.
-Still to be implemented:
 
-- [x] macOS Compatability
+- [x] macOS compatability
 - [x] Session tracking; start, end, duration.
 - [ ] Custom variable tracking for screenviews
 
