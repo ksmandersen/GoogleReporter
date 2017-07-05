@@ -75,16 +75,18 @@ public class GoogleReporter {
         send(type: "screenView", parameters: data)
     }
 
-    /// Tracks a session start to Google Analytics.
+    /// Tracks a session start to Google Analytics by setting the `sc`
+    /// parameter of the request. The `dp` parameter is set to the name
+    /// of the application.
     ///
     /// - Parameter start: true indicate session started, false - session finished.
-    public func session(start: Bool) {
-        let queryArguments: [String: String] = [
+    public func session(start: Bool, parameters: [String: String] = [:]) {
+        let data = parameters.combinedWith([
             "sc": start ? "start" : "end",
             "dp": appName,
-        ]
+        ])
 
-        send(type: nil, parameters: queryArguments)
+        send(type: nil, parameters: data)
     }
 
     /// Tracks an event to Google Analytics.
