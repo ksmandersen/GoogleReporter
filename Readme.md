@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-## Usage
+## Events
 
 You can track any event you wish to using the ``event()`` method on the ``GoogleReporter``. Example:
 
@@ -42,6 +42,8 @@ func didCompleteSignUp() {
 }
 ```
 
+## Screenviews
+
 In many cases you'll want to track what "screens" that the user navigates to. A natural place to do that is in your ``ViewController``s ``viewDidAppear``.
 You can use the ``screenView()`` method of the ``GoogleReporter`` which works the same as ``event()``.
 
@@ -50,6 +52,32 @@ class BeerViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 	GoogleReporter.shared.screenView("Beer")
+    }
+}
+```
+
+## Sessions
+
+You can track individual sessions for a user by calling ``session(start: true)`` when the user opens the app and ``session(start: false)`` when they close the app. Here's an example of how to do that in your apps ``UIApplicationDelegate``:
+
+```swift
+import GoogleReporter
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        GoogleReporter.shared.configure(withTrackerId: "UA-XXXXX-XX")
+
+        return true
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        GoogleReporter.shared.session(start: true)
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        GoogleReporter.shared.session(start: false)
     }
 }
 ```
