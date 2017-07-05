@@ -183,9 +183,11 @@ public class GoogleReporter {
     }
     
     private lazy var uniqueUserIdentifier: String = {
+        #if os(iOS) || os(tvOS) || os(watchOS)
         if let identifier = UIDevice.current.identifierForVendor?.uuidString, self.usesVendorIdentifier {
             return identifier
         }
+        #endif
 
         let defaults = UserDefaults.standard
         guard let identifier = defaults.string(forKey: GoogleReporter.identifierKey) else {
