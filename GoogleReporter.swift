@@ -260,7 +260,7 @@ public class GoogleReporter {
 
     private lazy var screenResolution: String = {
         #if os(iOS) || os(tvOS) || os(watchOS)
-            let size = UIScreen.main.bounds.size
+            let size = UIScreen.main.nativeBounds.size
         #elseif os(OSX)
             let size = NSScreen.main?.frame.size ?? .zero
         #endif
