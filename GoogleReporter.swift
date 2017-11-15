@@ -10,6 +10,7 @@
     import UIKit
 #elseif os(OSX)
     import AppKit
+    import WebKit
     import Foundation
 #endif
 
@@ -208,14 +209,24 @@ public class GoogleReporter {
     }()
 
     public lazy var userAgent: String = {
-        #if os(iOS) || os(tvOS) || os(watchOS)
+        #if os(iOS) || os(watchOS) || os(tvOS)
             let currentDevice = UIDevice.current
             let osVersion = currentDevice.systemVersion.replacingOccurrences(of: ".", with: "_")
-            return "Mozilla/5.0 (\(currentDevice.model); CPU iPhone OS \(osVersion) like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13T534YI" // swiftlint:disable:this line_length
+            let fallbackAgent = "Mozilla/5.0 (\(currentDevice.model); CPU iPhone OS \(osVersion) like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13T534YI" // swiftlint:disable:this line_length
+
+            #if os(tvOS)
+                return fallbackAgent
+            #else
+                let webView = UIWebView()
+                return webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? fallbackAgent
+            #endif
         #elseif os(OSX)
             let osVersion = ProcessInfo.processInfo.operatingSystemVersionString
             let versionString = osVersion.replacingOccurrences(of: ".", with: "_")
-            return "Mozilla/5.0 (Macintosh; Intel Mac OS X \(versionString)) AppleWebKit/603.2.4 (KHTML, like Gecko) \(self.appName)/\(self.appVersion)" // swiftlint:disable:this line_length
+            let fallbackAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X \(versionString)) AppleWebKit/603.2.4 (KHTML, like Gecko) \(self.appName)/\(self.appVersion)" // swiftlint:disable:this line_length
+
+            let webView = WebView()
+            return webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? fallbackAgent
         #endif
     }()
 
