@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.name         = "GoogleReporter"
-  s.version      = "1.2"
+  s.version      = "1.3"
   s.summary      = "Easily integrate your app with Google Analytics"
 
   s.description  = <<-DESC
