@@ -211,11 +211,11 @@ public class GoogleReporter {
         #if os(iOS) || os(tvOS) || os(watchOS)
             let currentDevice = UIDevice.current
             let osVersion = currentDevice.systemVersion.replacingOccurrences(of: ".", with: "_")
-            return "Mozilla/5.0 (\(currentDevice.model); CPU iPhone OS \(osVersion) like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13T534YI"
+            return "Mozilla/5.0 (\(currentDevice.model); CPU iPhone OS \(osVersion) like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13T534YI" // swiftlint:disable:this line_length
         #elseif os(OSX)
             let osVersion = ProcessInfo.processInfo.operatingSystemVersionString
             let versionString = osVersion.replacingOccurrences(of: ".", with: "_")
-            return "Mozilla/5.0 (Macintosh; Intel Mac OS X \(versionString)) AppleWebKit/603.2.4 (KHTML, like Gecko) \(self.appName)/\(self.appVersion)"
+            return "Mozilla/5.0 (Macintosh; Intel Mac OS X \(versionString)) AppleWebKit/603.2.4 (KHTML, like Gecko) \(self.appName)/\(self.appVersion)" // swiftlint:disable:this line_length
         #endif
     }()
 
