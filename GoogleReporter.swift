@@ -10,8 +10,8 @@
     import UIKit
 #elseif os(OSX)
     import AppKit
-    import WebKit
     import Foundation
+    import WebKit
 #endif
 
 extension Dictionary {
@@ -39,7 +39,6 @@ extension Dictionary {
 /// - Note: A valid Google Analytics tracker ID must be set with `configure(withTrackerId:)` before
 /// reporting any events.
 public class GoogleReporter {
-
     /// Returns the singleton reporter instance.
     public static let shared = GoogleReporter()
 
