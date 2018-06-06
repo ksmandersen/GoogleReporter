@@ -51,7 +51,8 @@ public class GoogleReporter {
     public var usesVendorIdentifier = false
 
     /// Specifies if the users IP should be anonymized
-    public var anonymizeIP = false
+    /// Default is true
+    public var anonymizeIP = true
 
     private static let baseURL = URL(string: "https://www.google-analytics.com/")!
     private static let identifierKey = "co.kristian.GoogleReporter.uniqueUserIdentifier"
