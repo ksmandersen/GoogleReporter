@@ -82,6 +82,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 ## Technical Notes
 
+In order to be GDPR compliant, Google Reporter will ask Google Analytics to anonymize users IP's by default. If you wish to opt-out of this you will neeed
+to set ``anonymizeIP`` to false.
+
 The GoogleReporter uses the native ``UserDefaults.standard`` to store a random UUID that uniquely identifies the user/install. Clearing or otherwise tampering
 with the UserDefaults may cause the user identifier to be lost and the GoogleReporter will generate a new unique identifier.
 
