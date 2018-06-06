@@ -46,10 +46,10 @@ public class GoogleReporter {
     /// Default is true.
     public var quietMode = true
 
-    /// 	Specifies if app should use IDFV (`UIDevice.current.identifierForVendor`), instead of generating its own UUID.
-    /// 	Default is false
+    /// Specifies if app should use IDFV (`UIDevice.current.identifierForVendor`), instead of generating its own UUID.
+    /// Default is false
     public var usesVendorIdentifier = false
-    
+
     /// Specifies if the users IP should be anonymized
     public var anonymizeIP = false
 
@@ -146,7 +146,7 @@ public class GoogleReporter {
         if let type = type, !type.isEmpty {
             queryArguments.updateValue(type, forKey: "t")
         }
-        
+
         queryArguments["aip"] = anonymizeIP ? "1" : nil
 
         let arguments = queryArguments.combinedWith(parameters)
