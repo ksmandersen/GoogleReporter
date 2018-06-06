@@ -49,6 +49,9 @@ public class GoogleReporter {
     /// 	Specifies if app should use IDFV (`UIDevice.current.identifierForVendor`), instead of generating its own UUID.
     /// 	Default is false
     public var usesVendorIdentifier = false
+    
+    /// Specifies if the users IP should be anonymized
+    public var anonymizeIP = false
 
     private static let baseURL = URL(string: "https://www.google-analytics.com/")!
     private static let identifierKey = "co.kristian.GoogleReporter.uniqueUserIdentifier"
@@ -143,6 +146,8 @@ public class GoogleReporter {
         if let type = type, !type.isEmpty {
             queryArguments.updateValue(type, forKey: "t")
         }
+        
+        queryArguments["aip"] = anonymizeIP ? "1" : nil
 
         let arguments = queryArguments.combinedWith(parameters)
         guard let url = GoogleReporter.generateUrl(with: arguments) else {
