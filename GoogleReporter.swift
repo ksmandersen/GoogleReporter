@@ -6,11 +6,11 @@
 //  Copyright © 2017 Kristian Co. All rights reserved.
 //
 
+import Foundation
 #if os(iOS) || os(tvOS) || os(watchOS)
     import UIKit
 #elseif os(OSX)
     import AppKit
-    import Foundation
     import WebKit
 #endif
 
