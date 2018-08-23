@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.name         = "GoogleReporter"
-  s.version      = "1.4"
+  s.version      = "1.5"
   s.summary      = "Easily integrate your app with Google Analytics"
 
   s.description  = <<-DESC
@@ -26,5 +26,5 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/ksmandersen/GoogleReporter.git", :tag => "#{s.version}" }
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.source_files  = "Source", "GoogleReporter/Source/GoogleReporter.swift"
+  s.source_files  = "GoogleReporter/Source/*.swift"
 end
