@@ -6,7 +6,7 @@
 //  Copyright © 2017 Kristian Co. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for GoogleReporter.
 FOUNDATION_EXPORT double GoogleReporterVersionNumber;

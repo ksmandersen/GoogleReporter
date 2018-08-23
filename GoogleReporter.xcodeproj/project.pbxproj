@@ -7,25 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8121F86F1ED88E9E0098C85C /* GoogleReporter tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 8121F86D1ED88E9E0098C85C /* GoogleReporter tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8121F8731ED88F210098C85C /* GoogleReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187DEE41ED2E86E00839D40 /* GoogleReporter.swift */; };
+		815D81E6212E97A40077ADE6 /* GoogleReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815D81E5212E97A40077ADE6 /* GoogleReporter.swift */; };
+		815D81E7212E97A60077ADE6 /* GoogleReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815D81E5212E97A40077ADE6 /* GoogleReporter.swift */; };
+		815D81E8212E97A60077ADE6 /* GoogleReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815D81E5212E97A40077ADE6 /* GoogleReporter.swift */; };
 		8187DEDE1ED2E85100839D40 /* GoogleReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8187DEDC1ED2E85100839D40 /* GoogleReporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8187DEE51ED2E86E00839D40 /* GoogleReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187DEE41ED2E86E00839D40 /* GoogleReporter.swift */; };
-		81A3CED91EE0153900672187 /* GoogleReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187DEE41ED2E86E00839D40 /* GoogleReporter.swift */; };
-		FF2F92251EDF34500032F932 /* GoogleReporter macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = FF2F92231EDF34500032F932 /* GoogleReporter macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8121F86B1ED88E9E0098C85C /* GoogleReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleReporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8121F86D1ED88E9E0098C85C /* GoogleReporter tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GoogleReporter tvOS.h"; sourceTree = "<group>"; };
-		8121F86E1ED88E9E0098C85C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		815D81E5212E97A40077ADE6 /* GoogleReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleReporter.swift; sourceTree = "<group>"; };
 		8187DED91ED2E85100839D40 /* GoogleReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleReporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8187DEDC1ED2E85100839D40 /* GoogleReporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleReporter.h; sourceTree = "<group>"; };
 		8187DEDD1ED2E85100839D40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8187DEE41ED2E86E00839D40 /* GoogleReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleReporter.swift; sourceTree = SOURCE_ROOT; };
 		FF2F92211EDF34500032F932 /* GoogleReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleReporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF2F92231EDF34500032F932 /* GoogleReporter macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GoogleReporter macOS.h"; sourceTree = "<group>"; };
-		FF2F92241EDF34500032F932 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,21 +47,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8121F86C1ED88E9E0098C85C /* GoogleReporter tvOS */ = {
+		815D81E4212E97620077ADE6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				8121F86D1ED88E9E0098C85C /* GoogleReporter tvOS.h */,
-				8121F86E1ED88E9E0098C85C /* Info.plist */,
+				815D81E5212E97A40077ADE6 /* GoogleReporter.swift */,
 			);
-			path = "GoogleReporter tvOS";
+			path = Source;
 			sourceTree = "<group>";
 		};
 		8187DECF1ED2E85100839D40 = {
 			isa = PBXGroup;
 			children = (
 				8187DEDB1ED2E85100839D40 /* GoogleReporter */,
-				8121F86C1ED88E9E0098C85C /* GoogleReporter tvOS */,
-				FF2F92221EDF34500032F932 /* GoogleReporter macOS */,
 				8187DEDA1ED2E85100839D40 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,20 +76,11 @@
 		8187DEDB1ED2E85100839D40 /* GoogleReporter */ = {
 			isa = PBXGroup;
 			children = (
+				815D81E4212E97620077ADE6 /* Source */,
 				8187DEDC1ED2E85100839D40 /* GoogleReporter.h */,
 				8187DEDD1ED2E85100839D40 /* Info.plist */,
-				8187DEE41ED2E86E00839D40 /* GoogleReporter.swift */,
 			);
 			path = GoogleReporter;
-			sourceTree = "<group>";
-		};
-		FF2F92221EDF34500032F932 /* GoogleReporter macOS */ = {
-			isa = PBXGroup;
-			children = (
-				FF2F92231EDF34500032F932 /* GoogleReporter macOS.h */,
-				FF2F92241EDF34500032F932 /* Info.plist */,
-			);
-			path = "GoogleReporter macOS";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,7 +90,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8121F86F1ED88E9E0098C85C /* GoogleReporter tvOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,7 +105,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF2F92251EDF34500032F932 /* GoogleReporter macOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,11 +116,11 @@
 			buildConfigurationList = 8121F8721ED88E9E0098C85C /* Build configuration list for PBXNativeTarget "GoogleReporter tvOS" */;
 			buildPhases = (
 				8121F8661ED88E9E0098C85C /* Sources */,
+				81216A941FBC5EF80012CB21 /* Run Swift Format */,
+				81216A951FBC5F0B0012CB21 /* Run Swift Lint */,
 				8121F8671ED88E9E0098C85C /* Frameworks */,
 				8121F8681ED88E9E0098C85C /* Headers */,
 				8121F8691ED88E9E0098C85C /* Resources */,
-				81216A941FBC5EF80012CB21 /* Run Swift Format */,
-				81216A951FBC5F0B0012CB21 /* Run Swift Lint */,
 			);
 			buildRules = (
 			);
@@ -151,22 +131,22 @@
 			productReference = 8121F86B1ED88E9E0098C85C /* GoogleReporter.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		8187DED81ED2E85100839D40 /* GoogleReporter */ = {
+		8187DED81ED2E85100839D40 /* GoogleReporter iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8187DEE11ED2E85100839D40 /* Build configuration list for PBXNativeTarget "GoogleReporter" */;
+			buildConfigurationList = 8187DEE11ED2E85100839D40 /* Build configuration list for PBXNativeTarget "GoogleReporter iOS" */;
 			buildPhases = (
 				8187DED41ED2E85100839D40 /* Sources */,
+				81216A931FBC5E340012CB21 /* Run Swift Format */,
+				81216A911FBC5DDB0012CB21 /* Run Swift Lint */,
 				8187DED51ED2E85100839D40 /* Frameworks */,
 				8187DED61ED2E85100839D40 /* Headers */,
 				8187DED71ED2E85100839D40 /* Resources */,
-				81216A931FBC5E340012CB21 /* Run Swift Format */,
-				81216A911FBC5DDB0012CB21 /* Run Swift Lint */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = GoogleReporter;
+			name = "GoogleReporter iOS";
 			productName = GoogleReporter;
 			productReference = 8187DED91ED2E85100839D40 /* GoogleReporter.framework */;
 			productType = "com.apple.product-type.framework";
@@ -176,11 +156,11 @@
 			buildConfigurationList = FF2F92281EDF34500032F932 /* Build configuration list for PBXNativeTarget "GoogleReporter macOS" */;
 			buildPhases = (
 				FF2F921C1EDF34500032F932 /* Sources */,
+				81216A961FBC5F2C0012CB21 /* Run Swift Format */,
+				81216A971FBC5F3C0012CB21 /* Run Swift Lint */,
 				FF2F921D1EDF34500032F932 /* Frameworks */,
 				FF2F921E1EDF34500032F932 /* Headers */,
 				FF2F921F1EDF34500032F932 /* Resources */,
-				81216A961FBC5F2C0012CB21 /* Run Swift Format */,
-				81216A971FBC5F3C0012CB21 /* Run Swift Lint */,
 			);
 			buildRules = (
 			);
@@ -207,7 +187,7 @@
 					};
 					8187DED81ED2E85100839D40 = {
 						CreatedOnToolsVersion = 8.3.2;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
 					FF2F92201EDF34500032F932 = {
@@ -229,7 +209,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8187DED81ED2E85100839D40 /* GoogleReporter */,
+				8187DED81ED2E85100839D40 /* GoogleReporter iOS */,
 				8121F86A1ED88E9E0098C85C /* GoogleReporter tvOS */,
 				FF2F92201EDF34500032F932 /* GoogleReporter macOS */,
 			);
@@ -352,7 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8121F8731ED88F210098C85C /* GoogleReporter.swift in Sources */,
+				815D81E7212E97A60077ADE6 /* GoogleReporter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8187DEE51ED2E86E00839D40 /* GoogleReporter.swift in Sources */,
+				815D81E6212E97A40077ADE6 /* GoogleReporter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,7 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81A3CED91EE0153900672187 /* GoogleReporter.swift in Sources */,
+				815D81E8212E97A60077ADE6 /* GoogleReporter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,7 +365,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "GoogleReporter tvOS/Info.plist";
+				INFOPLIST_FILE = GoogleReporter/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.kristian.GoogleReporter;
@@ -409,7 +389,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "GoogleReporter tvOS/Info.plist";
+				INFOPLIST_FILE = GoogleReporter/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.kristian.GoogleReporter;
@@ -427,32 +407,46 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES_ERROR;
+				CLANG_WARN_BOOL_CONVERSION = YES_ERROR;
+				CLANG_WARN_COMMA = YES_ERROR;
+				CLANG_WARN_CONSTANT_CONVERSION = YES_ERROR;
+				CLANG_WARN_CXX0X_EXTENSIONS = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES_ERROR;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES_ERROR;
 				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES_ERROR;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES_ERROR;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES_AGGRESSIVE;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES_ERROR;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -467,11 +461,28 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES_ERROR;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_PEDANTIC = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -480,6 +491,8 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
+				TAPI_VERIFY_MODE = Pedantic;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -490,32 +503,46 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES_ERROR;
+				CLANG_WARN_BOOL_CONVERSION = YES_ERROR;
+				CLANG_WARN_COMMA = YES_ERROR;
+				CLANG_WARN_CONSTANT_CONVERSION = YES_ERROR;
+				CLANG_WARN_CXX0X_EXTENSIONS = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES_ERROR;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES_ERROR;
 				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES_ERROR;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES_ERROR;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES_AGGRESSIVE;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES_ERROR;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -524,17 +551,36 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES_ERROR;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_PEDANTIC = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
+				TAPI_VERIFY_MODE = Pedantic;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -558,7 +604,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.kristian.GoogleReporter;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GoogleReporter;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
@@ -582,7 +628,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.kristian.GoogleReporter;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GoogleReporter;
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
@@ -601,7 +647,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "GoogleReporter macOS/Info.plist";
+				INFOPLIST_FILE = GoogleReporter/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -626,7 +672,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "GoogleReporter macOS/Info.plist";
+				INFOPLIST_FILE = GoogleReporter/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -660,7 +706,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8187DEE11ED2E85100839D40 /* Build configuration list for PBXNativeTarget "GoogleReporter" */ = {
+		8187DEE11ED2E85100839D40 /* Build configuration list for PBXNativeTarget "GoogleReporter iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8187DEE21ED2E85100839D40 /* Debug */,

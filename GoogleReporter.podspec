@@ -26,5 +26,5 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/ksmandersen/GoogleReporter.git", :tag => "#{s.version}" }
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.source_files  = "Source", "GoogleReporter.swift"
+  s.source_files  = "Source", "GoogleReporter/Source/GoogleReporter.swift"
 end
