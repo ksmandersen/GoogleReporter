@@ -56,8 +56,11 @@ public class GoogleReporter {
 
     /// Dictionary of custom key value pairs to add to every query.
     /// Use it for custom dimensions (cd1, cd2...).
+    ///
+    /// See [Google Analytics Custom Dimensions](https://support.google.com/analytics/answer/2709828?hl=en) for
+    /// more information on Custom Dimensions
     public var customDimensionArguments: [String: String]?
-    
+
     private static let baseURL = URL(string: "https://www.google-analytics.com/")!
     private static let identifierKey = "co.kristian.GoogleReporter.uniqueUserIdentifier"
 
@@ -151,9 +154,9 @@ public class GoogleReporter {
         if let type = type, !type.isEmpty {
             queryArguments.updateValue(type, forKey: "t")
         }
-        
+
         if let customDimensions = self.customDimensionArguments {
-            queryArguments.merge(customDimensions, uniquingKeysWith: { (_, new) in new })
+            queryArguments.merge(customDimensions, uniquingKeysWith: { _, new in new })
         }
 
         queryArguments["aip"] = anonymizeIP ? "1" : nil
