@@ -7,7 +7,7 @@
 
 Easily integrate Google Analytics into your iOS, macOS, and tvOS app without downloading any of the Google SDKs.
 
-**Important Notice:** Google has officially discontiuned the option for mobile analytics tracking through Google Analytics. New apps are asked to use Firebase. Existing apps will stop collecting data on **October 31, 2019**. It is however still possible to use this library by setting up new tracking properties as websites instead of mobile apps (See #14).
+**Important Notice:** Google has officially discontiuned the option for mobile analytics tracking through Google Analytics. New apps are asked to use Firebase. Existing apps will stop collecting data on **October 31, 2019**. It is however still possible to use this library by setting up new tracking properties as websites instead of mobile apps (See [#14](https://github.com/ksmandersen/GoogleReporter/issues/14)).
 
 [Read why I created Google Reporter here](https://medium.com/swift-digest/using-google-analytics-in-your-app-without-any-sdks-46f9a70bc178)
 
