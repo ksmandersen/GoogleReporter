@@ -131,6 +131,26 @@ public class GoogleReporter {
 
         send(type: "exception", parameters: data)
     }
+    
+    /// Tracks a timing to Google Analytics.
+    ///
+    /// - Parameter category: The category of the timing (utc).
+    /// - Parameter name: The variable name of the timing  (utv).
+    /// - Parameter label: The variable label for the timing  (utl).
+    /// - Parameter time: Length of the timing (utt).
+    /// - Parameter parameters: A dictionary of additional parameters for the timing
+    public func timing(_ category: String, name: String, label: String = "", time: TimeInterval,
+                      parameters: [String: String] = [:]) {
+        let milliseconds = Int(time*1000)
+        let data = parameters.combinedWith([
+            "utc": category,
+            "utv": name,
+            "utl": label,
+            "utt": String(milliseconds)
+            ])
+        
+        send(type: "timing", parameters: data)
+    }
 
     private func send(type: String?, parameters: [String: String]) {
         guard let trackerId = trackerId else {
@@ -224,6 +244,7 @@ public class GoogleReporter {
         return identifier
     }()
 
+    private var webViewForUserAgentDetection: WKWebView?
     public lazy var userAgent: String = {
         #if os(iOS) || os(watchOS) || os(tvOS)
             let currentDevice = UIDevice.current
@@ -233,8 +254,17 @@ public class GoogleReporter {
             #if os(tvOS)
                 return fallbackAgent
             #else
-                let webView = UIWebView()
-                return webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? fallbackAgent
+                webViewForUserAgentDetection = WKWebView()   // must be captured in instance variable to avoid invalidation
+                webViewForUserAgentDetection?.loadHTMLString("<html></html>", baseURL: nil)
+                webViewForUserAgentDetection?.evaluateJavaScript("navigator.userAgent", completionHandler: {
+                    [weak self] result, error in
+                    guard let self = self else { return }
+                    if let agent = result as? String {
+                        self.userAgent = agent
+                    }
+                    self.webViewForUserAgentDetection = nil
+                })
+                return fallbackAgent
             #endif
         #elseif os(OSX)
             let osVersion = ProcessInfo.processInfo.operatingSystemVersionString
