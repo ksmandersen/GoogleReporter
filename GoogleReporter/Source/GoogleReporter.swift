@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import WebKit
+
 #if os(iOS) || os(tvOS) || os(watchOS)
     import UIKit
 #elseif os(OSX)
@@ -24,21 +26,29 @@ extension Dictionary {
     }
 }
 
-/// GoogleReporter is a class that enables tracking events to Google Analytics. The class uses the
+/// GoogleReporter is a class that enables tracking events and screen views to Google Analytics. The class uses the
 /// Google Analytics Measurement protocol which is
 /// [documented in full here](https://developers.google.com/analytics/devguides/collection/protocol/v1/reference).
 ///
-/// The class support two specific types of events and generic events.
-/// - Screen views are reported using `screenView(_:parameters:)` with the name of the screen.
+/// As Google has officially discontiuned the option for mobile analytics tracking through Google Analytics
+/// (new apps are asked to use Firebase instead) this library converts screen views to pageviews and you need to
+/// set up new tracking properties as websites in the Google Analytics admin console. App bundle identifier
+/// (can be set with any custom value for privacy reasons) will be used as dummy hostname for screen view (pageview) tracking.
+///
+/// The class support tracking of sessions, screen/page views, events and timings with optional custom dimension parameters.
+/// - Sessions are reported with `session(_:parameters:)` with the first parameter set to true for session start or false for session end.
+/// - Screen (page) views are reported using `screenView(_:parameters:)` with the name of the screen.
 /// - Exceptions are reported using `exception(_:isFatal:parameters:)`.
 /// - Generic events are reported using `event(_:action:label:parameters:)`.
+/// - Timings are reported using `timing(_:name:label:time:parameters:)` with time parameter in seconds.
 ///
 /// For a full list of all the supported parameters please refer to the [Google Analytics parameter
 /// reference](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters)
 ///
 /// - Note: A valid Google Analytics tracker ID must be set with `configure(withTrackerId:)` before
 /// reporting any events.
-public class GoogleReporter {
+
+final public class GoogleReporter {
     /// Returns the singleton reporter instance.
     public static let shared = GoogleReporter()
 
@@ -53,6 +63,10 @@ public class GoogleReporter {
     /// Specifies if the users IP should be anonymized
     /// Default is true
     public var anonymizeIP = true
+    
+    /// Specifies if the user opted out from analytics. While opted out reporter will not send events, timings and screen views
+    /// Default is false
+    public var optedOut = false
 
     /// Dictionary of custom key value pairs to add to every query.
     /// Use it for custom dimensions (cd1, cd2...).
@@ -63,10 +77,13 @@ public class GoogleReporter {
 
     private static let baseURL = URL(string: "https://www.google-analytics.com/")!
     private static let identifierKey = "co.kristian.GoogleReporter.uniqueUserIdentifier"
-
+    private var session: URLSession
+    
     private var trackerId: String?
 
-    private init() {}
+    private init(session: URLSession = URLSession.shared) {
+        self.session = session
+    }
 
     /// Configures the reporter with a Google Analytics Identifier (Tracker ID).
     /// The token can be obtained from the admin page of the tracked Google Analytics entity.
@@ -76,14 +93,19 @@ public class GoogleReporter {
         self.trackerId = trackerId
     }
 
-    /// Tracks a screen view event to Google Analytics by setting the `cd`
-    /// parameter of the request.
+    /// Tracks a screen view event as page view to Google Analytics by setting the required parameters
+    // `dh` - hostname as appIdentifier and `dp` - path as screen name with leading `/`
+    /// and optional `dt` - document title as screen name pageview parameters for valid hit request.
     ///
     /// - Parameter name: The name of the screen.
     /// - Parameter parameters: A dictionary of additional parameters for the event.
     public func screenView(_ name: String, parameters: [String: String] = [:]) {
-        let data = parameters.combinedWith(["cd": name])
-        send(type: "screenView", parameters: data)
+        let nameWithoutSpaces = name.replacingOccurrences(of: " ", with: "")
+        let data = parameters.combinedWith(["dh": appIdentifier,
+                                            "dp": "/" + nameWithoutSpaces,
+                                            "dt": name
+        ])
+        send(type: "pageview", parameters: data)
     }
 
     /// Tracks a session start to Google Analytics by setting the `sc`
@@ -158,6 +180,12 @@ public class GoogleReporter {
             print("You must set your tracker ID UA-XXXXX-XX with GoogleReporter.configure()")
             return
         }
+        guard optedOut == false else {
+            if !quietMode {
+                print("User opted out from analytics")
+            }
+            return
+        }
 
         var queryArguments: [String: String] = [
             "tid": trackerId,
@@ -190,7 +218,6 @@ public class GoogleReporter {
             print("Sending GA Report: ", url.absoluteString)
         }
 
-        let session = URLSession.shared
         let task = session.dataTask(with: url) { _, _, error in
             if let errorResponse = error?.localizedDescription {
                 print("Failed to deliver GA Request. ", errorResponse)
@@ -276,11 +303,11 @@ public class GoogleReporter {
         #endif
     }()
 
-    private lazy var appName: String = {
+    lazy var appName: String = {
         Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String ?? "(not set)"
     }()
 
-    private lazy var appIdentifier: String = {
+    lazy var appIdentifier: String = {
         Bundle.main.object(forInfoDictionaryKey: "CFBundleIdentifier") as? String ?? "(not set)"
     }()
 
