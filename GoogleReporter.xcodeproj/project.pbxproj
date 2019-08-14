@@ -199,11 +199,11 @@
 			};
 			buildConfigurationList = 8187DED31ED2E85100839D40 /* Build configuration list for PBXProject "GoogleReporter" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
+				Base,
 			);
 			mainGroup = 8187DECF1ED2E85100839D40;
 			productRefGroup = 8187DEDA1ED2E85100839D40 /* Products */;
