@@ -40,7 +40,8 @@ extension Dictionary {
 ///
 /// The class support tracking of sessions, screen/page views, events and timings with optional custom
 /// dimension parameters.
-/// - Sessions are reported with `session(_:parameters:)` with the first parameter set to true for session start or false for session end.
+/// - Sessions are reported with `session(_:parameters:)` with the first parameter set to true for
+/// session start or false for session end.
 /// - Screen (page) views are reported using `screenView(_:parameters:)` with the name of the screen.
 /// - Exceptions are reported using `exception(_:isFatal:parameters:)`.
 /// - Generic events are reported using `event(_:action:label:parameters:)`.
