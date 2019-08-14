@@ -7,12 +7,14 @@
 //
 
 import Foundation
-import WebKit
 
 #if os(iOS) || os(tvOS) || os(watchOS)
     import UIKit
 #elseif os(OSX)
     import AppKit
+#endif
+
+#if SUPPORTS_WEBKIT
     import WebKit
 #endif
 
@@ -33,9 +35,11 @@ extension Dictionary {
 /// As Google has officially discontiuned the option for mobile analytics tracking through Google Analytics
 /// (new apps are asked to use Firebase instead) this library converts screen views to pageviews and you need to
 /// set up new tracking properties as websites in the Google Analytics admin console. App bundle identifier
-/// (can be set with any custom value for privacy reasons) will be used as dummy hostname for screen view (pageview) tracking.
+/// (can be set with any custom value for privacy reasons) will be used as dummy hostname for
+/// screen view (pageview) tracking.
 ///
-/// The class support tracking of sessions, screen/page views, events and timings with optional custom dimension parameters.
+/// The class support tracking of sessions, screen/page views, events and timings with optional custom
+/// dimension parameters.
 /// - Sessions are reported with `session(_:parameters:)` with the first parameter set to true for session start or false for session end.
 /// - Screen (page) views are reported using `screenView(_:parameters:)` with the name of the screen.
 /// - Exceptions are reported using `exception(_:isFatal:parameters:)`.
@@ -48,7 +52,7 @@ extension Dictionary {
 /// - Note: A valid Google Analytics tracker ID must be set with `configure(withTrackerId:)` before
 /// reporting any events.
 
-final public class GoogleReporter {
+public final class GoogleReporter {
     /// Returns the singleton reporter instance.
     public static let shared = GoogleReporter()
 
@@ -63,8 +67,9 @@ final public class GoogleReporter {
     /// Specifies if the users IP should be anonymized
     /// Default is true
     public var anonymizeIP = true
-    
-    /// Specifies if the user opted out from analytics. While opted out reporter will not send events, timings and screen views
+
+    /// Specifies if the user opted out from analytics. While opted out reporter will not send events,
+    /// timings and screen views
     /// Default is false
     public var optedOut = false
 
@@ -78,7 +83,7 @@ final public class GoogleReporter {
     private static let baseURL = URL(string: "https://www.google-analytics.com/")!
     private static let identifierKey = "co.kristian.GoogleReporter.uniqueUserIdentifier"
     private var session: URLSession
-    
+
     private var trackerId: String?
 
     private init(session: URLSession = URLSession.shared) {
@@ -103,8 +108,7 @@ final public class GoogleReporter {
         let nameWithoutSpaces = name.replacingOccurrences(of: " ", with: "")
         let data = parameters.combinedWith(["dh": appIdentifier,
                                             "dp": "/" + nameWithoutSpaces,
-                                            "dt": name
-        ])
+                                            "dt": name])
         send(type: "pageview", parameters: data)
     }
 
@@ -153,7 +157,7 @@ final public class GoogleReporter {
 
         send(type: "exception", parameters: data)
     }
-    
+
     /// Tracks a timing to Google Analytics.
     ///
     /// - Parameter category: The category of the timing (utc).
@@ -162,15 +166,15 @@ final public class GoogleReporter {
     /// - Parameter time: Length of the timing (utt).
     /// - Parameter parameters: A dictionary of additional parameters for the timing
     public func timing(_ category: String, name: String, label: String = "", time: TimeInterval,
-                      parameters: [String: String] = [:]) {
-        let milliseconds = Int(time*1000)
+                       parameters: [String: String] = [:]) {
+        let milliseconds = Int(time * 1000)
         let data = parameters.combinedWith([
             "utc": category,
             "utv": name,
             "utl": label,
-            "utt": String(milliseconds)
-            ])
-        
+            "utt": String(milliseconds),
+        ])
+
         send(type: "timing", parameters: data)
     }
 
@@ -271,35 +275,35 @@ final public class GoogleReporter {
         return identifier
     }()
 
-    private var webViewForUserAgentDetection: WKWebView?
+    #if SUPPORTS_WEBKIT
+        private var webViewForUserAgentDetection: WKWebView?
+    #endif
     public lazy var userAgent: String = {
-        #if os(iOS) || os(watchOS) || os(tvOS)
-            let currentDevice = UIDevice.current
-            let osVersion = currentDevice.systemVersion.replacingOccurrences(of: ".", with: "_")
-            let fallbackAgent = "Mozilla/5.0 (\(currentDevice.model); CPU iPhone OS \(osVersion) like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13T534YI" // swiftlint:disable:this line_length
-
-            #if os(tvOS)
-                return fallbackAgent
-            #else
-                webViewForUserAgentDetection = WKWebView()   // must be captured in instance variable to avoid invalidation
-                webViewForUserAgentDetection?.loadHTMLString("<html></html>", baseURL: nil)
-                webViewForUserAgentDetection?.evaluateJavaScript("navigator.userAgent", completionHandler: {
-                    [weak self] result, error in
-                    guard let self = self else { return }
-                    if let agent = result as? String {
-                        self.userAgent = agent
-                    }
-                    self.webViewForUserAgentDetection = nil
-                })
-                return fallbackAgent
-            #endif
-        #elseif os(OSX)
+        #if os(OSX)
             let osVersion = ProcessInfo.processInfo.operatingSystemVersionString
             let versionString = osVersion.replacingOccurrences(of: ".", with: "_")
             let fallbackAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X \(versionString)) AppleWebKit/603.2.4 (KHTML, like Gecko) \(self.appName)/\(self.appVersion)" // swiftlint:disable:this line_length
 
-            let webView = WebView()
-            return webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? fallbackAgent
+        #else
+            let currentDevice = UIDevice.current
+            let osVersion = currentDevice.systemVersion.replacingOccurrences(of: ".", with: "_")
+            let fallbackAgent = "Mozilla/5.0 (\(currentDevice.model); CPU iPhone OS \(osVersion) like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13T534YI" // swiftlint:disable:this line_length
+        #endif
+
+        #if SUPPORTS_WEBKIT
+            // must be captured in instance variable to avoid invalidation
+            webViewForUserAgentDetection = WKWebView() /
+                webViewForUserAgentDetection?.loadHTMLString("<html></html>", baseURL: nil)
+            webViewForUserAgentDetection?.evaluateJavaScript("navigator.userAgent") { [weak self] result, _ in
+                guard let self = self else { return }
+                if let agent = result as? String {
+                    self.userAgent = agent
+                }
+                self.webViewForUserAgentDetection = nil
+            }
+            return fallbackAgent
+        #else
+            return fallbackAgent
         #endif
     }()
 
